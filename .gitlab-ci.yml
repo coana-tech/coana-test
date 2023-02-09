@@ -19,4 +19,4 @@ coana-ci:
   script:
     - coana . -o output.json
   artifacts:
-    output.json
+    - output.json
