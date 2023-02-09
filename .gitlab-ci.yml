@@ -1,0 +1,22 @@
+image: node:16
+
+stages: 
+  - install
+  - coana
+
+build:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    - node_modules/
+
+coana-ci:
+  stage: coana
+  image: coana/coana:v1.0 
+  dependencies:
+    - install
+  script:
+    - coana . -o output.json
+  artifacts:
+    output.json
