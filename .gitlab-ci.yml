@@ -4,7 +4,7 @@ stages:
   - install
   - coana
 
-build:
+install:
   stage: install
   script:
     - npm install
