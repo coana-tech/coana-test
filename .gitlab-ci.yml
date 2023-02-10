@@ -14,7 +14,7 @@ install:
 
 coana-ci:
   stage: coana
-  image: coana/coana:v1.0 
+  image: coana/coana:latest 
   dependencies:
     - install
   script:
