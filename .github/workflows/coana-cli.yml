@@ -1,0 +1,26 @@
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Coana CLI
+
+on: push
+
+jobs:
+  # run extension unit tests
+  coana-cli:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+      - name: Run npm install
+        run: npm install
+
+      - name: Run Coana CLI
+        uses: coana-tech/coana-action@v1
