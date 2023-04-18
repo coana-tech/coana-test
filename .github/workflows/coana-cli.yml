@@ -23,4 +23,8 @@ jobs:
         run: npm install
 
       - name: Run Coana CLI
+        id: coana-cli
         uses: coana-tech/coana-action@v1
+
+      - name: Print output
+        run: echo "Markdown ${{steps.coana-cli.outputs.markdown}}"
