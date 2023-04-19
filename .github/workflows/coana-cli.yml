@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Coana CLI
         id: coana-cli
-        uses: coana-tech/coana-action@v1
+        uses: coana-tech/coana-action@v2
 
       - name: Print output
         run: echo "Markdown ${{steps.coana-cli.outputs.markdown}}"
