@@ -2,7 +2,7 @@
 
 name: Coana CLI
 
-on: pull_request
+on: push
 
 jobs:
   # run extension unit tests
@@ -11,8 +11,6 @@ jobs:
     defaults:
       run:
         working-directory: .
-    permissions:
-      pull-requests: write
     steps:
       - uses: actions/checkout@v3
 
@@ -26,12 +24,7 @@ jobs:
 
       - name: Run Coana CLI
         id: coana-cli
-        uses: coana-tech/coana-action@v5
-
-      - name: Print output
-        run: echo "Markdown ${{steps.coana-cli.outputs.markdown}}"
-
-      - uses: mshick/add-pr-comment@v2
+        uses: coana-tech/coana-action/vulnerability-analysis@stable
         with:
-          message: |
-            ${{steps.coana-cli.outputs.markdown}}
+          apiKey: ${{ secrets.COANA_API_TOKEN }}
+          repoUrl: https://github.com/${{github.repository}}
